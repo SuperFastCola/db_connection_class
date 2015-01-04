@@ -1,11 +1,5 @@
-<?
-
-function _t($message){
-  echo "<pre>\n";
-  print_r($message);
-  echo "</pre>\n";
-}
-
+<?php
+//command line PHP requires <?php at top of required/included files - otherwise see them as text
 class DB 
 {
   public $sql;
@@ -27,8 +21,8 @@ class DB
   public function connect()
   {
      // Connect to MySQL
-     $this->connection = new mysqli($this->sql['host'], $this->sql['user'], $this->sql['pass'], $this->sql['db'], $this->sql['port']);
-   
+     $this->connection = new mysqli($this->sql['db_host'], $this->sql['db_user'], $this->sql['db_pass'], $this->sql['db_name'], $this->sql['db_port']);
+
      // Select assigned DB
      if($this->connection->connect_errno){
        die("Could not connect to DB");
@@ -111,6 +105,4 @@ class DB
 
 }
 
-$myDB = new DB($connection_array);
-$myDB->connect();
 ?>
